@@ -9,7 +9,7 @@ public class Display extends Canvas{
 
 	private JFrame frame;
 	private int width,height;
-	private String title;#
+	private String title;
 	
 	private Canvas canvas;
 	

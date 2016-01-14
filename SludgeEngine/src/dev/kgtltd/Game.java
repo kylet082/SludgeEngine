@@ -2,7 +2,9 @@ package dev.kgtltd;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
+import dev.kgtltd.gfx.ImageLoader;
 import dev.kgtltd.gfx.display.Display;
 
 public class Game implements Runnable {
@@ -15,14 +17,23 @@ public class Game implements Runnable {
 	private Thread thread;
 	private boolean isRunning = false;
 	
+	//handle pixel projections
 	private BufferStrategy bs;
 	private Graphics g;
+	
+
 	
 	public Game(String title,int width,int height){
 		this.width = width;
 		this.height = height;
 		this.title = title;
 				
+		
+	}
+	//the initializing component
+	private void init(){
+		display = new Display(title,width,height);
+		
 		
 	}
 	
@@ -67,14 +78,25 @@ public class Game implements Runnable {
 		}
 	}
 	
-	
-	//the initializing component
-	private void init(){
-		display = new Display(title,width,height);
-	}
-	
+
 	public void render(){
+		//buffer strategy object settings to 3 buffers
 		bs = display.getCanvas().getBufferStrategy();
+		if (bs == null){
+			display.getCanvas().createBufferStrategy(3);
+			return;
+		}
+		
+		//use graphics object to draw the buffer strategy
+		g = bs.getDrawGraphics();
+		//clear the screen
+		g.clearRect(0,0,width,height);
+		
+		//draw here
+	
+		//end drawing
+		bs.show();
+		g.dispose();
 	}
 
 	public void update(){
