@@ -3,6 +3,8 @@ package dev.kgtltd;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
+import dev.kgtltd.entity.creature.player.Player;
+
 public class Launcher {
 	
 	public static void main(String[] args){
@@ -15,6 +17,7 @@ public class Launcher {
 		//new game started
 		Game game = new Game("GameTitle",width,height);
 		game.start();
+		
 	}
 	
 	
