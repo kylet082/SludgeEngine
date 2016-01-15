@@ -7,10 +7,11 @@ import javax.imageio.ImageIO;
 
 public class ImageLoader {
 	
-	public static BufferedImage loadImage(String path){
+public static BufferedImage loadImage(String path){
 		
 		try {
-			return ImageIO.read(ImageLoader.class.getClassLoader().getResource(path));
+			//returns the buffered image object of the loaded image
+			return ImageIO.read(ImageLoader.class.getClassLoader().getResourceAsStream(path));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -18,6 +19,5 @@ public class ImageLoader {
 		}
 		
 		return null;
-		
 	}
 }

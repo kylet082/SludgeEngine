@@ -2,22 +2,25 @@ package dev.kgtltd.entity;
 
 import java.awt.Graphics;
 
+//component based entity system NB Read about it!!!
+
+//This Code will be running via an entity based system. 
+		
+
 public abstract class Entity {
 	
-	//look at component entity system
-	//player position
+	//keeps track of the position
 	protected float x,y;
-	
+	//size of the entity
 	protected int width,height;
 	
-	public Entity (float x,float y,int width, int height){
-		this.x= x;
+	public Entity(float x,float y,int width ,int height){
+		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 	}
 	
-	//Getters and Setters
 	public float getX() {
 		return x;
 	}
@@ -50,9 +53,8 @@ public abstract class Entity {
 		this.height = height;
 	}
 
-	
-	//Classes
 	public abstract void update();
 	
 	public abstract void render(Graphics g);
+
 }

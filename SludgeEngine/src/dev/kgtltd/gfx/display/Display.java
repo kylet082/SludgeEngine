@@ -8,11 +8,23 @@ import javax.swing.JFrame;
 public class Display{
 
 	private JFrame frame;
-	
 	private Canvas canvas;
 	
-	public Display(String title,int width,int height){
+	private String title;
+	private int width, height;
+	
+	public Display(String title, int width, int height){
 		
+		this.title = title;
+		this.width = width;
+		this.height = height;
+		
+		createDisplay();
+	}
+	
+	public void createDisplay(){
+		
+		//holds the Canvas
 		frame = new JFrame(title);
 		
 		frame.setSize(width,height);
@@ -21,14 +33,17 @@ public class Display{
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
+		//where all the graphics are projected to
 		canvas = new Canvas();
+		Dimension d = new Dimension(width,height);
 		
-		canvas.setPreferredSize(new Dimension(width,height));
-		canvas.setMaximumSize(new Dimension(width,height));
-		canvas.setMinimumSize(new Dimension(width,height));
-		//Set the JFrame to hold the focus
+		canvas.setPreferredSize(d);
+		canvas.setMaximumSize(d);
+		canvas.setMinimumSize(d);
+		//make sure the keymanager will work by unfocusing the canvas andfocusing on the JFrame
 		canvas.setFocusable(false);
 		
+		//add canvas to JFrame
 		frame.add(canvas);
 		frame.pack();
 		
@@ -36,10 +51,11 @@ public class Display{
 	
 	public Canvas getCanvas(){
 		return canvas;
+		
 	}
 	
-	//access JFrame for input
 	public JFrame getFrame(){
 		return frame;
 	}
 }
+
