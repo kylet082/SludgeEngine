@@ -3,6 +3,7 @@ import java.awt.Graphics;
 
 import dev.kgtltd.Game;
 import dev.kgtltd.entity.creature.player.Player;
+import dev.kgtltd.tile.Tile;
 
 
 public class GameState extends States {
@@ -26,10 +27,10 @@ public class GameState extends States {
 	@Override
 	public void render(Graphics g) {
 		
-		
+
+		Tile.tile[0].render(g,0,0);
 		//draw the player
 		player.render(g);
-		
 		
 	}
 
