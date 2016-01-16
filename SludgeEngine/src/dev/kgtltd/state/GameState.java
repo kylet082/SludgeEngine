@@ -17,7 +17,7 @@ public class GameState extends States {
 		
 		//player start position
 		player = new Player(game,10,10);
-		world = new World("");
+		world = new World("res/Worlds/level_1.txt");
 	}
 	
 	@Override
