@@ -4,22 +4,26 @@ import java.awt.Graphics;
 import dev.kgtltd.Game;
 import dev.kgtltd.entity.creature.player.Player;
 import dev.kgtltd.tile.Tile;
+import dev.kgtltd.world.World;
 
 
 public class GameState extends States {
 
 	private Player player;
+	private World world;
 	
 	public GameState(Game game){
 		super(game);
 		
 		//player start position
 		player = new Player(game,10,10);
+		world = new World("");
 	}
 	
 	@Override
 	public void update() {
 		
+		world.update();
 		//update the player
 		player.update();
 	}
@@ -28,7 +32,7 @@ public class GameState extends States {
 	public void render(Graphics g) {
 		
 
-		Tile.tile[0].render(g,0,0);
+		world.render(g);
 		//draw the player
 		player.render(g);
 		
