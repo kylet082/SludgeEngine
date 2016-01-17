@@ -13,7 +13,7 @@ public class Player extends Creature{
 	private Game game;
 	
 	public Player(Game game,float x, float y) {
-		super(x, y,Creature.DEFAULT_CREATURE_WIDTH,Creature.DEFAULT_CREATURE_HEIGHT);
+		super(game,x, y,Creature.DEFAULT_CREATURE_WIDTH,Creature.DEFAULT_CREATURE_HEIGHT);
 		this.game = game;
 	}
 
@@ -23,6 +23,7 @@ public class Player extends Creature{
 		
 		getInput();
 		move();
+		game.getGameCamera().centerOnEntity(this);
 		
 	}
 
@@ -30,7 +31,8 @@ public class Player extends Creature{
 	public void render(Graphics g) {
 		
 		//case float variables x,y into ints
-		g.drawImage(Assets.player, (int)x, (int)y,width,height,null);
+		g.drawImage(Assets.player, (int)(x - game.getGameCamera().getxOffset()), 
+				(int)(y - game.getGameCamera().getyOffset()),width,height,null);
 	}
 	
 	private void getInput(){

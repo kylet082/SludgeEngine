@@ -2,11 +2,13 @@ package dev.kgtltd.world;
 
 import java.awt.Graphics;
 
+import dev.kgtltd.Game;
 import dev.kgtltd.tile.Tile;
 import dev.kgtltd.utils.Utils;
 
 public class World {
 	
+	private Game game;
 	//width and height of grid-world
 	private int width, height;
 	//spawning position of the player
@@ -14,8 +16,11 @@ public class World {
 	//store the tile id's for world representation
 	private int[][] worldTiles;
 	
-	public World(String path){
+	
+	public World(Game game,String path){
+		this.game = game;
 		loadWorld(path);
+		
 	}
 	
 	public void update(){}
@@ -23,7 +28,8 @@ public class World {
 	public void render(Graphics g){
 		for(int y = 0;y< height;y++){
 			for(int x = 0;x < width;x++){
-				 getTile(x,y).render(g, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT);
+				 getTile(x,y).render(g,(int) (x * Tile.TILE_WIDTH - game.getGameCamera().getxOffset() ),
+						 (int) (y * Tile.TILE_HEIGHT - game.getGameCamera().getyOffset()));
 			}
 		}
 	}

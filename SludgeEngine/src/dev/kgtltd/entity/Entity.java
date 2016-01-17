@@ -2,6 +2,8 @@ package dev.kgtltd.entity;
 
 import java.awt.Graphics;
 
+import dev.kgtltd.Game;
+
 //component based entity system NB Read about it!!!
 
 //This Code will be running via an entity based system. 
@@ -14,11 +16,14 @@ public abstract class Entity {
 	//size of the entity
 	protected int width,height;
 	
-	public Entity(float x,float y,int width ,int height){
+	protected Game game;
+	
+	public Entity(Game game,float x,float y,int width ,int height){
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.game = game;
 	}
 	
 	public float getX() {

@@ -14,8 +14,8 @@ public class Launcher {
 			int width = gd.getDisplayMode().getWidth();
 			int height = gd.getDisplayMode().getHeight();
 			
-			Game game = new Game("Title",width,height);
+			Game game = new Game("Title",width ,height);
 			
 			game.start();
-		}	
-	}
+		}
+}

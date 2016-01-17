@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import dev.kgtltd.gfx.Assets;
+import dev.kgtltd.gfx.GameCamera;
 import dev.kgtltd.gfx.display.Display;
 import dev.kgtltd.input.KeyManager;
 import dev.kgtltd.state.GameState;
@@ -13,7 +14,7 @@ public class Game implements Runnable {
 
 	
 	private Display display;
-	public int width,height;
+	private int width,height;
 	public String title;
 	
 	public boolean isRunning = false;
@@ -30,6 +31,9 @@ public class Game implements Runnable {
 	//Input
 	private KeyManager keyManager;
 	
+	//Camera
+	private GameCamera gameCamera;
+	
 	
 	public Game(String title,int width,int height){
 		
@@ -39,6 +43,7 @@ public class Game implements Runnable {
 		
 		keyManager = new KeyManager();
 		
+		
 	}
 	
 	//initialize all the graphics of the game
@@ -47,6 +52,8 @@ public class Game implements Runnable {
 		//adds the key listener to the frame
 		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
+		
+		gameCamera = new GameCamera(this,50,50);
 	
 		//setting the game state
 		
@@ -131,18 +138,10 @@ public class Game implements Runnable {
 				System.out.println("ticks and frames : " + ticks);
 				ticks = 0;
 				timer = 0;
-			}
-			
-			
-			
+			}	
 		}
 		
 		stop();
-	}
-	
-	//return the keymanager object for the player class
-	public KeyManager getKeyManager(){
-		return keyManager;
 	}
 	
 	public synchronized void start(){
@@ -169,5 +168,23 @@ public class Game implements Runnable {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	//return the keymanager object for the player class
+	public KeyManager getKeyManager(){
+		return keyManager;
+	}
+	
+	//return the camera current position
+	public GameCamera getGameCamera(){
+		return gameCamera;
+	}
+	
+	//return the width and the height of game window
+	public int getHeight(){
+		return height;
+	}
+	public int getWidth(){
+		return width;
 	}
 }
