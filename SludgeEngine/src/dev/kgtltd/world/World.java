@@ -26,12 +26,30 @@ public class World {
 	public void update(){}
 	
 	public void render(Graphics g){
+		
+		//add  or subtract 1 to see the affects of rendering tile optimization 
+		//render Tiles from the point of the Offset of the screen
+		int xStart = (int) Math.max(0,game.getGameCamera().getxOffset() / Tile.TILE_WIDTH);
+		int xEnd = (int)Math.min(width,(game.getGameCamera().getxOffset() + game.getWidth()) / Tile.TILE_WIDTH +1);
+		int yStart = (int)Math.max(0, game.getGameCamera().getyOffset() / Tile.TILE_HEIGHT);
+		int yEnd = (int)Math.min(height, (game.getGameCamera().getyOffset() + game.getHeight()) / Tile.TILE_HEIGHT + 1);
+		
+		for(int y = yStart;y< yEnd;y++){
+			for(int x = xStart;x < xEnd;x++){
+				 getTile(x,y).render(g,(int) (x * Tile.TILE_WIDTH - game.getGameCamera().getxOffset() ),
+						 (int) (y * Tile.TILE_HEIGHT - game.getGameCamera().getyOffset()));
+			}
+		}
+		
+		
+		//renders every tile in the world
+		/*
 		for(int y = 0;y< height;y++){
 			for(int x = 0;x < width;x++){
 				 getTile(x,y).render(g,(int) (x * Tile.TILE_WIDTH - game.getGameCamera().getxOffset() ),
 						 (int) (y * Tile.TILE_HEIGHT - game.getGameCamera().getyOffset()));
 			}
-		}
+		}*/
 	}
 	
 	public Tile getTile(int x,int y){
