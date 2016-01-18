@@ -1,7 +1,7 @@
 package dev.kgtltd.state;
 import java.awt.Graphics;
 
-import dev.kgtltd.Game;
+import dev.kgtltd.Handler;
 import dev.kgtltd.entity.creature.player.Player;
 import dev.kgtltd.world.World;
 
@@ -11,12 +11,14 @@ public class GameState extends States {
 	private Player player;
 	private World world;
 	
-	public GameState(Game game){
-		super(game);
+	public GameState(Handler handler){
+		super(handler);
 		
 		//player start position
-		player = new Player(game,10,10);
-		world = new World(game,"res/Worlds/level_1.txt");	
+		world = new World(handler,"res/Worlds/level_1.txt");
+		handler.setWorld(world);
+		player = new Player(handler,10,10);
+			
 		
 	}
 	

@@ -1,12 +1,11 @@
 package dev.kgtltd.state;
 
 import java.awt.Graphics;
-
-import dev.kgtltd.Game;
+import dev.kgtltd.Handler;
 
 public abstract class States {
 	
-	protected Game game;
+	protected Handler handler;
 	
 	//Game State manager
 	private static States currentState = null;
@@ -21,8 +20,8 @@ public abstract class States {
 	}
 	
 	
-	public States(Game game){
-		this.game = game;
+	public States(Handler handler){
+		this.handler = handler;
 	}
 	
 	//classes

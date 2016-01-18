@@ -3,16 +3,16 @@ package dev.kgtltd.state;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import dev.kgtltd.Game;
+import dev.kgtltd.Handler;
 
 
 
 public class MenuState extends States {
 	
-	protected Game game;
+	protected Handler handler;
 	
-	public MenuState(Game game){
-		super(game);
+	public MenuState(Handler handler){
+		super(handler);
 	}
 
 	@Override

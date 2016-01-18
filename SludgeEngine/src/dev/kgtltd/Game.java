@@ -34,6 +34,9 @@ public class Game implements Runnable {
 	//Camera
 	private GameCamera gameCamera;
 	
+	//Handler 
+	private Handler handler;
+	
 	
 	public Game(String title,int width,int height){
 		
@@ -53,11 +56,13 @@ public class Game implements Runnable {
 		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
 		
+		handler = new Handler(this);
+		
 		gameCamera = new GameCamera(this,50,50);
 	
 		//setting the game state
 		
-		gameState = new GameState(this);
+		gameState = new GameState(handler);
 		States.setState(gameState);
 		
 	}
