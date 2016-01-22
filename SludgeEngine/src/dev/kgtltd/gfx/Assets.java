@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 	
-	public static BufferedImage player,grass,dirt,brownTile,stoneTile;
+	public static BufferedImage player,grass,dirt,stone,stoneTile;
 	
 	private static final int width = 100, height = 100 ;
 	public static void init(){
@@ -16,6 +16,7 @@ public class Assets {
 		
 		grass = tiles.crop(0,0,width/2 -1 ,height/2-1);
 		dirt = tiles.crop(100,0,width/2 ,height/2);
+		stone = tiles.crop(200, 0, width / 2, height / 2 );
 		/*
 		mustardTile = tiles.crop(0,0 , width, height);
 		brownTile = tiles.crop(100,0 , width, height);

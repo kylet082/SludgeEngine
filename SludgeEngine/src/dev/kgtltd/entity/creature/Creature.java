@@ -2,6 +2,7 @@ package dev.kgtltd.entity.creature;
 
 import dev.kgtltd.Handler;
 import dev.kgtltd.entity.Entity;
+import dev.kgtltd.tile.Tile;
 
 public abstract class Creature extends Entity {
 	
@@ -28,10 +29,66 @@ public abstract class Creature extends Entity {
 	}
 	
 	public void move(){
-		x += xMove;
-		y+= yMove;
+		moveX();
+		moveY();
+		
 	}
 	
+	public void moveX(){
+		if(xMove > 0){//moving right
+			
+			int tempX = (int)(x+ xMove + bounds.x + bounds.width) / Tile.TILE_WIDTH;
+			
+			// check if a collision has occurred on the top and bottom right corners of the collision box
+			if(!collisionWithTile(tempX,(int)(y+ bounds.y) / Tile.TILE_WIDTH) && 
+					!collisionWithTile(tempX,(int)(y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)){
+				
+				x += xMove;
+			}
+			
+		}else if(xMove < 0){//moving left
+			int tempX = (int)(x+ xMove + bounds.x) / Tile.TILE_WIDTH;
+			
+			// check if a collision has occurred on the top and bottom right corners of the collision box
+			if(!collisionWithTile(tempX,(int)(y + bounds.y) / Tile.TILE_WIDTH) && 
+					!collisionWithTile(tempX,(int)(y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)){
+				
+				x += xMove;
+			}
+		}
+	
+	}
+	
+	public void moveY(){
+		if(yMove < 0 ){//moving up
+			 int tempY = (int)(y + yMove + bounds.y) / Tile.TILE_HEIGHT;
+			 
+			 if(!collisionWithTile((int)(x + bounds.x ) / Tile.TILE_WIDTH , tempY) &&
+					 !collisionWithTile((int)(x + bounds.x + bounds.width ) / Tile.TILE_WIDTH , tempY)){
+				 
+				 y += yMove;
+			 }
+			 
+		}
+		else if(yMove > 0){
+		
+			int tempY = (int)(y + yMove + bounds.y + bounds.height) / Tile.TILE_HEIGHT;
+			 
+			 if(!collisionWithTile((int)(x + bounds.x ) / Tile.TILE_WIDTH , tempY) &&
+					 !collisionWithTile((int)(x + bounds.x + bounds.width ) / Tile.TILE_WIDTH , tempY)){
+				 
+				 y += yMove;
+			 }
+			
+		}
+		
+		
+	}
+	
+	protected boolean collisionWithTile(int x, int y){
+		
+		return handler.getWorld().getTile(x,y).isSolid();
+	}
 	
 	//GETTERS AND SETTERS
 	//movement getters and setters

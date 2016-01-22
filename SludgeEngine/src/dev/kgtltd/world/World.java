@@ -53,6 +53,13 @@ public class World {
 	}
 	
 	public Tile getTile(int x,int y){
+		
+		//cover the possibly that the player steps out of the world bounds
+		if(x < 0 || y < 0 || x>= width || y >= height){
+			return Tile.grassTile;
+		}
+		
+		
 		//Retrieve the tile associated with tile id 
 		//that has been store at location x, y in the world
 		Tile t = Tile.tile[worldTiles[x][y]];

@@ -1,6 +1,7 @@
 package dev.kgtltd.entity;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import dev.kgtltd.Handler;
 
@@ -15,6 +16,8 @@ public abstract class Entity {
 	protected float x,y;
 	//size of the entity
 	protected int width,height;
+	//
+	protected Rectangle bounds;
 	
 	protected Handler handler;
 	
@@ -24,6 +27,8 @@ public abstract class Entity {
 		this.width = width;
 		this.height = height;
 		this.handler = handler;
+		
+		bounds = new Rectangle(0,0, width,height);
 	}
 	
 	public float getX() {
