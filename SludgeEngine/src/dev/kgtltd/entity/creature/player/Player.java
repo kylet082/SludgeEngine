@@ -43,13 +43,13 @@ public class Player extends Creature{
 		
 		/*
 		 *check position of t he collision box
-		 */
+		
 		
 		g.setColor(Color.red);
 		g.drawRect((int)(x + bounds.x - handler.getGameCamera().getxOffset()),
 				(int)(y + bounds.y - handler.getGameCamera().getyOffset()),
 				bounds.width, bounds.height);
-			
+		 */	
 		
 	}
 	

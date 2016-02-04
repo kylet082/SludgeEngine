@@ -39,7 +39,7 @@ public abstract class Creature extends Entity {
 			
 			int tempX = (int)(x+ xMove + bounds.x + bounds.width) / Tile.TILE_WIDTH;
 			
-			// check if a collision has occurred on the top and bottom right corners of the collision box
+			// check if a collision has occurred moveing right on the top and bottom right corners of the collision box
 			if(!collisionWithTile(tempX,(int)(y+ bounds.y) / Tile.TILE_WIDTH) && 
 					!collisionWithTile(tempX,(int)(y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)){
 				
@@ -49,7 +49,7 @@ public abstract class Creature extends Entity {
 		}else if(xMove < 0){//moving left
 			int tempX = (int)(x+ xMove + bounds.x) / Tile.TILE_WIDTH;
 			
-			// check if a collision has occurred on the top and bottom right corners of the collision box
+			// check if a collision has occurred moving left on the top and bottom left corners of the collision box
 			if(!collisionWithTile(tempX,(int)(y + bounds.y) / Tile.TILE_WIDTH) && 
 					!collisionWithTile(tempX,(int)(y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)){
 				
@@ -59,10 +59,12 @@ public abstract class Creature extends Entity {
 	
 	}
 	
+	
 	public void moveY(){
 		if(yMove < 0 ){//moving up
 			 int tempY = (int)(y + yMove + bounds.y) / Tile.TILE_HEIGHT;
 			 
+			// check if a collision has occurred moving up on the top and bottom right corners of the collision box
 			 if(!collisionWithTile((int)(x + bounds.x ) / Tile.TILE_WIDTH , tempY) &&
 					 !collisionWithTile((int)(x + bounds.x + bounds.width ) / Tile.TILE_WIDTH , tempY)){
 				 
@@ -73,8 +75,8 @@ public abstract class Creature extends Entity {
 		else if(yMove > 0){
 		
 			int tempY = (int)(y + yMove + bounds.y + bounds.height) / Tile.TILE_HEIGHT;
-			 
-			 if(!collisionWithTile((int)(x + bounds.x ) / Tile.TILE_WIDTH , tempY) &&
+			// check if a collision has occurred moving down on the top and bottom right corners of the collision box
+			if(!collisionWithTile((int)(x + bounds.x ) / Tile.TILE_WIDTH , tempY) &&
 					 !collisionWithTile((int)(x + bounds.x + bounds.width ) / Tile.TILE_WIDTH , tempY)){
 				 
 				 y += yMove;

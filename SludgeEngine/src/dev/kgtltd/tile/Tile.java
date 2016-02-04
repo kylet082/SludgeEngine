@@ -7,8 +7,15 @@ public class Tile {
 	
 	public static Tile[] tile = new Tile[256];
 	public static Tile grassTile = new GrassTile(0);
-	public static Tile dirtTile = new DirtTile(1);
 	public static Tile stoneTile = new StoneTile(2);
+	public static Tile GrsStnEdgeTile = new GrsStnEdgeTile(3);
+	public static Tile GrsStnEdgeTile1 = new GrsStnEdgeTile1(4);
+	public static Tile GrsStnEdgeTile2 = new GrsStnEdgeTile2(5);
+	public static Tile GrsStnEdgeTile3 = new GrsStnEdgeTile3(6);
+	public static Tile GrsStnEdgeTile4 = new GrsStnEdgeTile4(7);
+	public static Tile GrsStnEdgeTile5 = new GrsStnEdgeTile5(8);
+	public static Tile GrsStnEdgeTile6 = new GrsStnEdgeTile6(9);
+	public static Tile GrsStnEdgeTile7 = new GrsStnEdgeTile7(1);
 	
 	
 	protected BufferedImage texture;
